@@ -21,7 +21,7 @@ class ContactService
      */
     public function getAllContacts(): LengthAwarePaginator 
     {
-        return Contact::paginate(10);
+        return Contact::orderBy('name', 'asc')->paginate(10);
     }
 
     /**

@@ -30,18 +30,18 @@ class CreateContactRequest extends FormRequest
 
      public function messages(): array
     {
-        return [
-            'name.required' => 'O campo nome é obrigatório.',
-            'name.string' => 'O campo nome deve ser um texto.',
-            'name.min' => 'O nome deve ter no mínimo :min caracteres.',
-            'contact.required' => 'O campo contato é obrigatório.',
-            'contact.string' => 'O campo contato deve ser um texto.',
-            'contact.digits' => 'O contato deve ter exatamente 9 dígitos.',
-            'contact.unique' => 'Este contato já está em uso.',
-            'email_address.required' => 'O campo email é obrigatório.',
-            'email_address.string' => 'O campo email deve ser um texto.',
-            'email_address.email' => 'O email deve ser um endereço de email válido.',
-            'email_address.unique' => 'Este email já está em uso.',
+       return [
+            'name.required' => 'The name field is required.',
+            'name.string' => 'The name field must be text.',
+            'name.min' => 'The name must be at least :min characters.',
+            'contact.required' => 'The contact field is required.',
+            'contact.string' => 'The contact field must be text.',
+            'contact.digits' => 'The contact must be exactly 9 digits.',
+            'contact.unique' => 'This contact is already in use.',
+            'email_address.required' => 'The email field is required.',
+            'email_address.string' => 'The email field must be text.',
+            'email_address.email' => 'The email must be a valid email address.',
+            'email_address.unique' => 'This email address is already in use.',
         ];
     }
 }

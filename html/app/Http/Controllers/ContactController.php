@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CreateContactRequest;
 use App\Http\Requests\UpdateContactRequest;
 use App\Services\ContactService;
 use Illuminate\Http\Request;
@@ -30,15 +31,18 @@ class ContactController extends Controller
      */
     public function create()
     {
-        //
+        return view('contacts.create');
+
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(CreateContactRequest $request)
     {
-        //
+        $this->contactService->createContact($request->validated());
+
+        return redirect()->route('contacts.index')->with('success', 'Contact created successfully!');
     }
 
     /**
