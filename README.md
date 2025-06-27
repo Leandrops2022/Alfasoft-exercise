@@ -1,3 +1,5 @@
+![Project Banner](banner.png)
+
 # Projeto de Gerenciamento de Contatos
 
 Este é um projeto de aplicação web desenvolvido com Laravel, focado no gerenciamento simples e eficiente de contatos. Ele inclui funcionalidades de CRUD (Criar, Ler, Atualizar, Deletar), autenticação de usuários e validação de formulários.
