@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ContactController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,3 +17,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/contacts', [ContactController::class, 'index'])->name('contacts.index');
+Route::get('/contacts/{contact}/edit', [ContactController::class, 'edit'])->name('contacts.edit');
+Route::delete('/contacts/{contact}', [ContactController::class, 'destroy'])->name('contacts.destroy');
+
+Route::put('/contacts/{contact}/restore', [ContactController::class, 'restore'])->name('contacts.restore');
