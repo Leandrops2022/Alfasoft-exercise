@@ -1,66 +1,107 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Projeto de Gerenciamento de Contatos
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Este é um projeto de aplicação web desenvolvido com Laravel, focado no gerenciamento simples e eficiente de contatos. Ele inclui funcionalidades de CRUD (Criar, Ler, Atualizar, Deletar), autenticação de usuários e validação de formulários.
 
-## About Laravel
+## Descrição do Projeto
+O objetivo principal deste projeto é fornecer uma plataforma para que usuários autenticados possam gerenciar seus contatos de forma organizada. A aplicação permite adicionar novos contatos, visualizar detalhes, editar informações existentes e remover contatos (com suporte a exclusão lógica, permitindo restauração).
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## Funcionalidades
+* Autenticação de Usuários: Sistema de registro, login e logout para proteger as funcionalidades do aplicativo.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+    * Gerenciamento de Contatos (CRUD):
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+    * Criar: Adicionar novos contatos com nome, contato telefônico e endereço de e-mail.
 
-## Learning Laravel
+    * Listar: Visualizar uma lista paginada de todos os contatos existentes, ordenada alfabeticamente pelo nome.
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+    * Visualizar Detalhes: Exibir informações completas de um contato específico.
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+    * Editar: Modificar os dados de um contato existente.
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+    * Excluir (Soft Delete): Marcar um contato como excluído sem removê-lo fisicamente do banco de dados, permitindo sua restauração posterior.
 
-## Laravel Sponsors
+    * Restaurar: Reativar contatos que foram excluídos logicamente.
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+* Validação de Formulários: Implementação de validação robusta para garantir a integridade dos dados inseridos, incluindo regras para formato de e-mail, comprimento mínimo de nome e unicidade de contato/e-mail (com exceção do próprio registro ao editar).
 
-### Premium Partners
+* Rotas Protegidas: A maioria das funcionalidades de gerenciamento de contatos (criação, edição, visualização de detalhes, exclusão) é protegida por autenticação. Apenas a lista geral de contatos é acessível publicamente.
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+# Tecnologias Utilizadas
+### Backend: PHP 8.1
 
-## Contributing
+### Framework: Laravel 10
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+### Banco de Dados: MariaDB
 
-## Code of Conduct
+### Frontend: HTML, CSS (estilos inline e básicos para o layout)
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+# Como Instalar e Rodar
+Para configurar e rodar o projeto localmente, siga os passos abaixo:
 
-## Security Vulnerabilities
+### 1. Clone o repositório:
+```bash
+git clone https://github.com/Leandrops2022/Alfasoft-exercise.git
+cd Alfasoft-exercise/html
+```
+    
+### 2. Instale as dependências do Composer:
+     
+```bash
+composer install
+```
+     
+### 3. Configure o arquivo de ambiente (.env):
+Copie o arquivo .env.example para .env:
+    
+```bash
+cp .env.example .env
+```
+Edite o arquivo .env com suas credenciais de banco de dados e outras configurações necessárias.
+Exemplo de configuração de banco de dados para MySQL:
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+```bash
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=your_database_name
+DB_USERNAME=your_db_user
+DB_PASSWORD=your_db_password
+```
+Se você estiver usando Docker para o MySQL, lembre-se das configurações de porta e host que você definiu.
 
-## License
+### 4. Gere a chave da aplicação:
+```bash
+php artisan key:generate
+```
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+### 5. Crie e rode as migrações (e seeds):
+    Isso criará as tabelas no seu banco de dados e populará com dados de teste (usuários e contatos).
+```bash
+php artisan migrate:fresh --seed
+```
+
+### 6. Inicie o servidor de desenvolvimento do Laravel:
+```bash
+php artisan serve
+```
+A aplicação estará acessível em http://127.0.0.1:8000.
+
+# Testes
+O projeto inclui testes de funcionalidade (Feature Tests) para validar as regras de validação dos formulários de criação e edição de contatos, garantindo que os dados são inseridos corretamente e que as regras de unicidade são respeitadas, inclusive no contexto de atualização de registros existentes.
+
+Para rodar os testes:
+
+## 1. Configure seu ambiente de teste no .env.testing ou phpunit.xml (muitas vezes, SQLite em memória é uma boa escolha para testes):
+```bash 
+DB_CONNECTION=sqlite
+DB_DATABASE=:memory:
+```
+
+## 2. Execute os testes:
+```bash
+php artisan test
+```
+# Autor
+* Leandro Pereira Soares - https://github.com/Leandrops2022
+# Licensa
+Este projeto está licenciado sob a Licença MIT - veja o arquivo LICENSE para detalhes.
