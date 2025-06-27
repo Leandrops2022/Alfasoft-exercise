@@ -19,7 +19,11 @@ Route::get('/', function () {
 });
 
 Route::get('/contacts', [ContactController::class, 'index'])->name('contacts.index');
-Route::get('/contacts/{contact}/edit', [ContactController::class, 'edit'])->name('contacts.edit');
-Route::delete('/contacts/{contact}', [ContactController::class, 'destroy'])->name('contacts.destroy');
+Route::get('/contacts/{id}', [ContactController::class, 'show'])->name('contacts.show');
 
-Route::put('/contacts/{contact}/restore', [ContactController::class, 'restore'])->name('contacts.restore');
+Route::get('/contacts/{id}/edit', [ContactController::class, 'edit'])->name('contacts.edit');
+Route::put('/contacts/{id}', [ContactController::class, 'update'])->name('contacts.update');
+
+Route::delete('/contacts/{id}', [ContactController::class, 'destroy'])->name('contacts.destroy');
+
+Route::put('/contacts/{id}/restore', [ContactController::class, 'restore'])->name('contacts.restore');

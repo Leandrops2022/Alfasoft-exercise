@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\UpdateContactRequest;
 use App\Services\ContactService;
 use Illuminate\Http\Request;
 
@@ -45,7 +46,8 @@ class ContactController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $contact = $this->contactService->getContactById($id);
+        return view('contacts.show', compact('contact'));
     }
 
     /**
@@ -53,15 +55,18 @@ class ContactController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $contact = $this->contactService->getContactById($id);
+        return view('contacts.edit', compact('contact'));
+
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(UpdateContactRequest $request, string $id)
     {
-        //
+        $contact = $this->contactService->updateContact($id, $request->validated());
+        return redirect()->route('contacts.show', $contact->id)->with('success', 'O contato foi editado com sucesso!');
     }
 
     /**
@@ -69,6 +74,11 @@ class ContactController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        if ($this->contactService->deleteContact($id)) {
+            $contacts = $this->contactService->getAllContacts();
+            return redirect()->route('contacts.index', compact('contacts'))->with('success', 'O contato foi excluído  com sucesso!');
+        }
+
+        return back()->withErrors(['erro' => 'Erro ao deletar o contato']);
     }
 }

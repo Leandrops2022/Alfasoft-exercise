@@ -36,31 +36,32 @@
             @forelse ($contacts as $contact)
                 {{-- Adiciona classe para linhas soft-deletadas --}}
                 <tr @if($contact->trashed()) class="deleted-row" @endif>
-                    <td>{{ $contact->name }}</td>
+                    <td>
+                        <a href="{{ route('contacts.show', $contact->id) }}">{{ $contact->name }}</a>
+                    </td>
                     <td>{{ $contact->contact }}</td>
                     <td>
                        
-                        <a href="{{ route('contacts.edit', $contact->id) }}">Editar</a>
+                        <a href="{{ route('contacts.edit', $contact->id) }}">Edit</a>
 
                         <form action="{{ route('contacts.destroy', $contact->id) }}" method="POST" style="display:inline;">
                             @csrf
                             @method('DELETE')
-                            {{-- Botão para deletar --}}
-                            <button type="submit" onclick="return confirm('Tem certeza que deseja excluir este contato?')" style="background: none; border: none; color: red; cursor: pointer; text-decoration: underline;">Excluir</button>
+                            <button type="submit" onclick="return confirm('Are you sure you want to delete this contact?')" style="background: none; border: none; color: red; cursor: pointer; text-decoration: underline;">Delete</button>
                         </form>
 
                         @if($contact->trashed())
                             <form action="{{ route('contacts.restore', $contact->id) }}" method="POST" style="display:inline; margin-left: 10px;">
                                 @csrf
-                                @method('PUT') {{-- Ou PATCH, para restaurar --}}
-                                <button type="submit" onclick="return confirm('Tem certeza que deseja restaurar este contato?')" style="background: none; border: none; color: blue; cursor: pointer; text-decoration: underline;">Restaurar</button>
+                                @method('PUT') 
+                                <button type="submit" onclick="return confirm('Are you sure you want to restore this contact??')" style="background: none; border: none; color: blue; cursor: pointer; text-decoration: underline;">Restore</button>
                             </form>
                         @endif
                     </td>
                 </tr>
             @empty
                 <tr>
-                    <td colspan="3">Nenhum contato encontrado.</td>
+                    <td colspan="3">No contacts were found.</td>
                 </tr>
             @endforelse
         </tbody>
